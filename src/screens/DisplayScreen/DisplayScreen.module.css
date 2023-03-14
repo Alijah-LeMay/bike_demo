@@ -1,0 +1,26 @@
+.displayScreenContainer {
+background-color: #7c7f65;
+display: flex;
+margin: none 5%;
+padding: 4%;
+}
+.displayScreenContainer img {
+max-width: 100%;
+max-height: 100%;
+}
+
+.columnTwo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+max-width: 30%;
+}
+.column {
+    margin: auto;
+    max-width: 30%;
+}
+
+.column {
+    margin: auto;
+    max-width: 30%;
+}

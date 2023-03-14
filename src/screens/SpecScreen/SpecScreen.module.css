@@ -1,0 +1,31 @@
+.specScreenContainer {
+    background-color: #9e9885;
+    margin: 0;
+    padding: 0;
+}
+.specScreenContainer h2 {
+    color: #5f5a48;
+    margin: 0;
+    padding: 0;
+}
+.specScreenContainer h3, p {
+    color: #3c3f28;
+    margin: 0;
+    padding: 0;
+}
+.specRow {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    margin: auto;
+}
+.specContainer {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    margin: auto;
+}
+.specIconContainer {
+    display: flex;
+    flex-direction: column;
+}

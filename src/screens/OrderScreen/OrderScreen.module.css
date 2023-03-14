@@ -1,0 +1,15 @@
+.orderScreenContainer {
+    display: flex;
+
+    background-color: #bea8aa;
+    margin: 0;
+    padding: 0
+}
+
+.columnTwo h3, p {
+    color: #3c3f28;
+    max-width: 350px;
+    text-align: center;
+    padding: 0;
+    margin: 5px 0;
+}
