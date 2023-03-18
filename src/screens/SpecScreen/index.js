@@ -4,12 +4,15 @@ import classes from './SpecScreen.module.css'
 const SpecScreen = () => {
   return (
     <div className={classes.specScreenContainer}>
-      <div>
-        <h2>Specs</h2>
-      </div>
+      <h3 className={classes.tag}>Specs</h3>
       <div className={classes.specRow}>
         <div className={classes.specContainer}>
-          <div className={classes.icon}>icon</div>
+          <div className={classes.icon}>
+            <i
+              className='fa-solid fa-gauge-high'
+              style={{ fontSize: '3rem', color: '#3c3f28', padding: '0 10px' }}
+            ></i>
+          </div>{' '}
           <div>
             <h3>35 mph</h3>
             <p>Get from A to B with speed</p>
@@ -17,10 +20,9 @@ const SpecScreen = () => {
         </div>
         <div className={classes.specContainer}>
           <div className={classes.icon}>
-            icon
             <i
-              className='fa-gauge'
-              style={{ fontSize: '3rem', color: 'white', padding: '0 10px' }}
+              className='fa-solid fa-shield'
+              style={{ fontSize: '3rem', color: '#3c3f28', padding: '0 10px' }}
             ></i>
           </div>
           <div>
@@ -31,7 +33,12 @@ const SpecScreen = () => {
       </div>
       <div className={classes.specRow}>
         <div className={classes.specContainer}>
-          <div className={classes.icon}>icon</div>
+          <div className={classes.icon}>
+            <i
+              className='fa-solid fa-weight-hanging'
+              style={{ fontSize: '3rem', color: '#3c3f28', padding: '0 10px' }}
+            ></i>
+          </div>
           <div>
             <h3>~22 lbs</h3>
             <p>Lightweight and agile</p>
