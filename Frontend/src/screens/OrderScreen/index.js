@@ -1,10 +1,12 @@
-import React, { useState, useRouter } from 'react'
+import React, { useState } from 'react'
 import FormField from '../../components/FormField'
 import classes from './OrderScreen.module.css'
+import axios from 'axios'
 
 const OrderScreen = () => {
   const [status, setStatus] = useState('Submit')
   const [infoMessage, setInfoMessage] = useState('Submit')
+  const [loadingSubmit, setLoadingSubmit] = useState(false)
 
   const [formState, setFormState] = useState({
     Name: '',
@@ -12,7 +14,7 @@ const OrderScreen = () => {
     Email: '',
     Message: '',
   })
-  const router = useRouter()
+  // const router = useRouter()
 
   const formConfig = {
     Name: {
@@ -54,55 +56,87 @@ const OrderScreen = () => {
     })
   }
 
-  const submitFormHandler = (event) => {
-    event.preventDefault()
-    console.log(event)
+  // const submitFormHandler = (event) => {
+  //   event.preventDefault()
+  //   console.log(event)
 
-    const webDevIcon = (
-      <i
-        style={{ float: 'right', margin: '5px' }}
-        className='fa-brands fa-wordpress'
-      ></i>
-    )
+  //   const webDevIcon = (
+  //     <i
+  //       style={{ float: 'right', margin: '5px' }}
+  //       className='fa-brands fa-wordpress'
+  //     ></i>
+  //   )
 
+  //   if (
+  //     formState.Name === undefined ||
+  //     formState.Name === null ||
+  //     formState.Name === '' ||
+  //     formState.Name.length < 1
+  //   ) {
+  //     setInfoMessage('Please enter your Name')
+
+  //     return
+  //   }
+  //   if (
+  //     formState.Email === undefined ||
+  //     formState.Email === null ||
+  //     formState.Email === '' ||
+  //     formState.Email.length < 1
+  //   ) {
+  //     setInfoMessage('Please enter your Email')
+
+  //     return
+  //   }
+
+  //   setInfoMessage(null)
+
+  //   fetch('/api/mail', {
+  //     method: 'POST',
+  //     headers: {
+  //       Accept: 'application/json, text/plain, */*',
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(formState),
+  //   }).then((res) => {
+  //     console.log('Response received')
+  //     if (res.status === 200) {
+  //       console.log('Response succeeded!')
+  //       setStatus('submit')
+  //     }
+  //   })
+  //   router.push('/thankyou')
+  // }
+  const submitHandler = async (e) => {
+    e.preventDefault()
+    setLoadingSubmit(true)
+    const { name, email, phone, message } = formState
     if (
-      formState.Name === undefined ||
-      formState.Name === null ||
-      formState.Name === '' ||
-      formState.Name.length < 1
-    ) {
-      setInfoMessage('Please enter your Name')
-
-      return
-    }
-    if (
-      formState.Email === undefined ||
-      formState.Email === null ||
-      formState.Email === '' ||
-      formState.Email.length < 1
+      email === undefined ||
+      email === null ||
+      email === '' ||
+      email.length < 1
     ) {
       setInfoMessage('Please enter your Email')
+      setLoadingSubmit(false)
 
       return
     }
-
     setInfoMessage(null)
 
-    fetch('/api/mail', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json, text/plain, */*',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formState),
-    }).then((res) => {
-      console.log('Response received')
-      if (res.status === 200) {
-        console.log('Response succeeded!')
-        setStatus('submit')
-      }
-    })
-    router.push('/thankyou')
+    try {
+      await axios.post('/api/send', {
+        name,
+        email,
+        phone,
+        message,
+        // address,
+        // typeOfBusiness,
+      })
+      console.log('Message Sent')
+      // ensuring that paths are still the same to prevent a state change attempt when the screen has changed.
+    } catch (error) {
+      console.log('Message failed to send')
+    }
   }
   // Prepare Mail Logic
 
@@ -132,7 +166,7 @@ const OrderScreen = () => {
   return (
     <div className={classes.orderScreenContainer}>
       <div className={classes.formContainer}>
-        <form onSubmit={(event) => submitFormHandler(event)}>
+        <form onSubmit={(event) => submitHandler(event)}>
           <h3>Order</h3>
           {formElements.map((formElement) => (
             <FormField

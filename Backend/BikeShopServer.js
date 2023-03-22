@@ -1,12 +1,13 @@
 const express = require('express')
 require('dotenv').config()
 
-const connectDB = require('./config/db')
+// const connectDB = require('./config/db')
 const path = require('path')
 
 const app = express()
 
 // Connect Database
+// connectDB()
 
 // Init Middleware
 // No longer body-parser
