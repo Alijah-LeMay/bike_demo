@@ -1,0 +1,9 @@
+.footerScreenContainer {
+    text-align: center;
+    background-color: #bea8aa;
+
+}
+.footerScreenContainer p {
+    text-align: center;
+    margin: 0 auto;
+}

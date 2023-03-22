@@ -1,0 +1,30 @@
+.input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    color: white;
+  }
+  .label {
+    float: left;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .text {
+    outline: none;
+    color: white;
+    border: 1px solid #ccc;
+    background-color: #9e9885;
+    font-size: 1.1rem;
+    padding: 10px 0 10px 10px;
+    width: 95%;
+    margin: 10px 0;
+  }
+  
+  .text:focus {
+    outline: none;
+    background-color: #ccc;
+  }
+  
+  .text::placeholder {
+    color: white;
+  }

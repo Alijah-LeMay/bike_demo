@@ -1,0 +1,9 @@
+.landingScreenContainer  {
+background-color: #9e9885;
+margin:auto;
+}
+.landingScreenContainer img {
+width: 100%;
+padding: 0;
+margin: 0;
+}
